@@ -28,24 +28,11 @@ const getAxleResult = (axleId) => {
 };
 
 const getAxleColorClass = (axle) => {
-  const peso = parseFloat(axle.peso || 0);
-  if (peso <= 0) return 'status-none';
-  
   const result = getAxleResult(axle.id);
-  if (!result) return 'status-none';
-
-  if (result.isExcedente) {
-    // If we have access to tolerance logic, we'd check if it's within tolerance.
-    // Assuming 'isExcedente' means it's above the total allowed (including tolerance if applicable).
-    // The prompt mentions: Amber if within 12.5% tolerance, Red if above.
-    // If result.excesso > 0 but it's not "dangerously" high?
-    // Let's use result.status if available, otherwise fallback to basic logic.
-    return 'status-danger';
-  }
+  if (!result || result.status === 'EMPTY') return 'status-none';
   
-  // If excesso is 0 but it might be close? 
-  // Let's stick to simple: if isExcedente is false, it's success.
-  return 'status-success';
+  // Return the status in lowercase as the class name
+  return result.status.toLowerCase();
 };
 
 const getAxleLabel = (tipo) => {
@@ -221,12 +208,17 @@ const getAxleWheels = (tipo) => {
   border-color: var(--border-medium);
 }
 
-.status-success {
+.legal {
   border-color: var(--success);
   background: rgba(16, 185, 129, 0.05);
 }
 
-.status-danger {
+.tolerancia {
+  border-color: var(--warning);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.excesso {
   border-color: var(--danger);
   background: rgba(239, 68, 68, 0.05);
 }
@@ -263,11 +255,15 @@ const getAxleWheels = (tipo) => {
   border-radius: 50%;
 }
 
-.status-success .wheel {
+.legal .wheel {
   border-color: var(--success);
 }
 
-.status-danger .wheel {
+.tolerancia .wheel {
+  border-color: var(--warning);
+}
+
+.excesso .wheel {
   border-color: var(--danger);
 }
 
