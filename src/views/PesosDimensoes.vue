@@ -96,6 +96,11 @@ const copiedDim = ref(false);
 
 // PBT Computed
 const isManual = computed(() => configValue.value === 'MANUAL');
+const currentSchema = computed(() => {
+  if (isManual.value) return [];
+  const preset = VEHICLE_PRESETS.find(p => String(p.value) === String(configValue.value));
+  return preset?.schema || [];
+});
 const limiteLegalPBT = computed(() => {
   if (isManual.value) return parseFloat(manualLimite.value || 0);
   return parseFloat(configValue.value);
@@ -188,7 +193,7 @@ const copiarDim = () => {
     <div class="card">
       <div class="card-header">
         <div class="card-title-with-icon">
-          <img src="/peso.png" alt="Peso" class="card-title-icon" />
+          <img src="/img/new_icons/pesos.png" alt="Peso" class="card-title-icon" />
           <h2 class="card-title">Pesos e Dimensões</h2>
         </div>
       </div>
@@ -284,9 +289,9 @@ const copiarDim = () => {
           </div>
 
           <VisualAxleSelector 
-            v-if="eixos.length > 0"
-            v-model="eixos" 
-            :resultadosEixos="resultadosEixos" 
+            v-if="eixos.length > 0 && currentSchema.length > 0"
+            :schema="currentSchema"
+            v-model:eixos="eixos"
           />
         </div>
 
