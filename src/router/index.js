@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   { path: '/', name: 'home', component: () => import('../views/HomeView.vue') },
+  // ... (mantendo o restante das rotas igual)
   { path: '/assumir', name: 'assumir', component: () => import('../views/AssumirServico.vue') },
   { path: '/envolvidos', name: 'envolvidos', component: () => import('../views/EnvolvidosView.vue') },
   { path: '/pmrv', name: 'pmrv', component: () => import('../views/RelatoPolicial.vue') },
@@ -21,7 +22,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   scrollBehavior() {
     return { top: 0, behavior: 'smooth' };
