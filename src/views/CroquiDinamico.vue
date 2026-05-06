@@ -60,10 +60,13 @@ const adicionarVia = (tipo) => {
   // Infrastructure logic
   switch (tipo) {
     case 'reta-2':
-      content = `<rect width="300" height="100" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" /><line x1="0" y1="5" x2="300" y2="5" stroke="white" stroke-width="2" /><line x1="0" y1="95" x2="300" y2="95" stroke="white" stroke-width="2" />`;
+      content = `<rect width="300" height="100" fill="#333" />
+                 <line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" stroke-dasharray="10,10" />`;
       break;
     case 'reta-3':
-      content = `<rect width="300" height="150" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" /><line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" /><line x1="0" y1="25" x2="300" y2="25" stroke="yellow" stroke-width="1" stroke-dasharray="5,5" /><line x1="0" y1="125" x2="300" y2="125" stroke="yellow" stroke-width="1" stroke-dasharray="5,5" />`;
+      content = `<rect width="300" height="150" fill="#333" />
+                 <line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" stroke-dasharray="10,10" />
+                 <line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" stroke-dasharray="10,10" />`;
       break;
     case 'reta-4-dashed':
       content = `<rect width="300" height="200" fill="#333" />
@@ -352,12 +355,10 @@ const exportar = async () => {
           <div class="croqui-toolbar">
             <label class="field-label">Rodovias</label>
             <div class="grid grid-cols-1 gap-2 mb-4">
-              <button class="btn btn-sm" @click="adicionarVia('reta-2')">Pista (2 faixas)</button>
-              <button class="btn btn-sm" @click="adicionarVia('reta-3')">Pista (3 faixas)</button>
-              <button class="btn btn-sm" @click="adicionarVia('reta-4')">Pista (4 faixas)</button>
+              <button class="btn btn-sm btn-info" @click="adicionarVia('reta-2')">Pista (2 faixas tracejadas)</button>
+              <button class="btn btn-sm btn-info" @click="adicionarVia('reta-3')">Pista (3 faixas tracejadas)</button>
               <button class="btn btn-sm btn-info" @click="adicionarVia('reta-4-dashed')">Pista (4 faixas tracejadas)</button>
             </div>
-
             <label class="field-label">Pontes</label>
             <div class="grid grid-cols-2 gap-2 mb-4">
               <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte (1 faixa)</button>
