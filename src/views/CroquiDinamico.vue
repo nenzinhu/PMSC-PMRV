@@ -344,19 +344,18 @@ const exportar = async () => {
         <div class="toolbar-group">
           <label class="field-label-orange">Vias</label>
           <div class="croqui-toolbar">
-            <label class="field-label">Retas</label>
-            <div class="grid grid-cols-3 gap-2 mb-4">
-              <button class="btn btn-sm" @click="adicionarVia('reta-2')">2 Pistas</button>
-              <button class="btn btn-sm" @click="adicionarVia('reta-3')">3 Pistas</button>
-              <button class="btn btn-sm" @click="adicionarVia('reta-4')">4 Pistas</button>
+            <label class="field-label">Rodovias</label>
+            <div class="grid grid-cols-1 gap-2 mb-4">
+              <button class="btn btn-sm" @click="adicionarVia('reta-2')">Pista (2 faixas)</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-3')">Pista (3 faixas)</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-4')">Pista (4 faixas)</button>
             </div>
 
             <label class="field-label">Pontes</label>
             <div class="grid grid-cols-2 gap-2 mb-4">
-              <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte 1 Pista</button>
-              <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte 4 Pistas</button>
-            </div>
-            <label class="field-label">Curvas</label>
+              <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte (1 faixa)</button>
+              <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte (4 faixas)</button>
+            </div>            <label class="field-label">Curvas</label>
             <div class="grid grid-cols-2 gap-2">
               <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
               <button class="btn btn-sm" @click="adicionarVia('curva-aberta-esq')">Aberta Esquerda</button>
