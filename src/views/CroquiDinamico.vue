@@ -442,26 +442,19 @@ const exportar = async () => {
           <!-- Vias (Pista de Rolamento) -->
           <template v-if="iconCategory === 'vias'">
              <div class="toolbar-group">
-                <label class="field-label-orange">Rodovias</label>
-                <div class="grid grid-cols-1 gap-2 mb-4">
-                  <button class="btn btn-sm btn-info" @click="adicionarVia('reta-2')">Pista (2 faixas tracejadas)</button>
-                  <button class="btn btn-sm btn-info" @click="adicionarVia('reta-3')">Pista (3 faixas tracejadas)</button>
-                  <button class="btn btn-sm btn-info" @click="adicionarVia('reta-4-dashed')">Pista (4 faixas tracejadas)</button>
-                </div>
-                <label class="field-label-orange">Pontes</label>
-                <div class="grid grid-cols-2 gap-2 mb-4">
-                  <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte (1 faixa)</button>
-                  <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte (4 faixas)</button>
-                </div>
-                <label class="field-label-orange">Curvas</label>
-                <div class="grid grid-cols-2 gap-2">
-                  <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
-                  <button class="btn btn-sm" @click="adicionarVia('curva-aberta-esq')">Aberta Esquerda</button>
-                  <button class="btn btn-sm" @click="adicionarVia('curva-fechada-dir')">Fechada Direita</button>
-                  <button class="btn btn-sm" @click="adicionarVia('curva-fechada-esq')">Fechada Esquerda</button>
-                </div>
-             </div>
-          </template>
+               <label class="field-label-orange">Pista de Rolamento</label>
+               <div class="grid grid-cols-1 gap-2 mb-4">
+                 <button class="btn btn-sm btn-info" @click="adicionarVia('reta-2')">Pista (2 faixas tracejadas)</button>
+                 <button class="btn btn-sm btn-info" @click="adicionarVia('reta-3')">Pista (3 faixas tracejadas)</button>
+                 <button class="btn btn-sm btn-info" @click="adicionarVia('reta-4-dashed')">Pista (4 faixas tracejadas)</button>
+                 <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte (1 faixa)</button>
+                 <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte (4 faixas)</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-aberta-esq')">Aberta Esquerda</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-fechada-dir')">Fechada Direita</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-fechada-esq')">Fechada Esquerda</button>
+               </div>
+             </div>          </template>
             <div v-for="(v, k) in ['v1', 'v2', 'moto', 'caminhao', 'onibus', 'bicicleta', 'viatura', 'ambulancia', 'reboque']" :key="k" 
                  class="icon-item" @click="inserirIcone(v)">
               <span class="icon-preview">{{ ICON_MAP[v].e }}</span>
