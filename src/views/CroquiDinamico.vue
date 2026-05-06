@@ -92,16 +92,20 @@ const adicionarVia = (tipo) => {
                  <line x1="0" y1="200" x2="300" y2="200" stroke="black" stroke-width="8" />`;
       break;
     case 'curva-aberta-dir':
-      content = `<path d="M 0 200 Q 100 0 300 0" fill="none" stroke="#333" stroke-width="100" />`;
+      content = `<path d="M 0 200 Q 100 0 300 0" fill="none" stroke="#333" stroke-width="100" />
+                 <path d="M 0 200 Q 100 0 300 0" fill="none" stroke="yellow" stroke-width="2" />`;
       break;
     case 'curva-aberta-esq':
-      content = `<path d="M 300 200 Q 200 0 0 0" fill="none" stroke="#333" stroke-width="100" />`;
+      content = `<path d="M 300 200 Q 200 0 0 0" fill="none" stroke="#333" stroke-width="100" />
+                 <path d="M 300 200 Q 200 0 0 0" fill="none" stroke="yellow" stroke-width="2" />`;
       break;
     case 'curva-fechada-dir':
-      content = `<path d="M 0 300 Q 0 0 300 0" fill="none" stroke="#333" stroke-width="100" />`;
+      content = `<path d="M 0 300 Q 0 0 300 0" fill="none" stroke="#333" stroke-width="100" />
+                 <path d="M 0 300 Q 0 0 300 0" fill="none" stroke="yellow" stroke-width="2" />`;
       break;
     case 'curva-fechada-esq':
-      content = `<path d="M 300 300 Q 300 0 0 0" fill="none" stroke="#333" stroke-width="100" />`;
+      content = `<path d="M 300 300 Q 300 0 0 0" fill="none" stroke="#333" stroke-width="100" />
+                 <path d="M 300 300 Q 300 0 0 0" fill="none" stroke="yellow" stroke-width="2" />`;
       break;
   }
 
