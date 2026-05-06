@@ -5,6 +5,9 @@ import { resolve } from 'path';
 export default defineConfig({
   base: '/PMSC-PMRV/',
   plugins: [vue()],
+  build: {
+    outDir: 'docs',
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
