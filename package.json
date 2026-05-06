@@ -1,0 +1,28 @@
+{
+  "name": "pmrv-4em1-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pmrv - Otimização & Agilidade",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cap:copy": "npm run build && npx cap copy",
+    "cap:sync": "npm run build && npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "build:apk:debug": "npm run build && npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/geolocation": "^6.1.1",
+    "vue": "^3.5.33",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "vite": "^6.0.0"
+  }
+}

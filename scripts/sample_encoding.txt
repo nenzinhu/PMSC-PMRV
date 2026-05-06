@@ -1,0 +1,5 @@
+﻿"C¾digo InfraþÒo","DescriþÒo da InfraþÒo","Art.CTB/Decreto","Infrator","Valor Real(R$)","Categoria","Medida Administrativa"
+
+"5002","Multa, por nÒo identificaþÒo do condutor infrator, imposta Ó pessoa jurÝdica ","257, º 8║","Proprietßrio","0,00","---",""
+
+"5010","Dirigir veÝculo sem possuir CNH ou PermissÒo para Dirigir","162, I","Condutor","0,00","7 - GravÝss 3X",""

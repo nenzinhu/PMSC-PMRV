@@ -1,0 +1,45 @@
+/**
+ * Banco de Dados de Pontos de Interesse (POIs) Operacionais
+ * Grande Florianópolis e Rodovias Principais
+ * Categorias: Postos, Mercados, Saúde, Segurança, etc.
+ */
+
+export const POI_DATA = [
+    // --- SEGURANÇA E SAÚDE ---
+    { name: "Posto PMRv P19 (SC-401)", type: "policia", lat: -27.4985, lng: -48.4875, rod: "SC-401", km: 9.2 },
+    { name: "Posto PMRv P01 (SC-401)", type: "policia", lat: -27.5794, lng: -48.5135, rod: "SC-401", km: 0 },
+    { name: "UPA Norte (Canasvieiras)", type: "saude", lat: -27.4365, lng: -48.4655, rod: "SC-401", km: 18.5 },
+    { name: "Hospital SOS Cardio", type: "saude", lat: -27.5485, lng: -48.4985, rod: "SC-401", km: 4.2 },
+
+    // --- POSTOS E BORRACHARIAS ---
+    { name: "Posto Shell (Saco Grande)", type: "posto", lat: -27.5462, lng: -48.4995, rod: "SC-401", km: 4.5 },
+    { name: "Posto Ipiranga (Cacupé)", type: "posto", lat: -27.5345, lng: -48.4942, rod: "SC-401", km: 5.8 },
+    { name: "Posto Texaco (Ingleses)", type: "posto", lat: -27.4452, lng: -48.4325, rod: "SC-403", km: 3.2 },
+    { name: "Borracharia do Alemão", type: "borracharia", lat: -27.4385, lng: -48.4485, rod: "SC-403", km: 1.5 },
+
+    // --- MERCADOS E BANCOS ---
+    { name: "Floripa Shopping (Bancos/Mercado)", type: "banco", lat: -27.5582, lng: -48.5042, rod: "SC-401", km: 2.5 },
+    { name: "Mercado Fort Atacadista (SC-401)", type: "mercado", lat: -27.4955, lng: -48.4865, rod: "SC-401", km: 9.8 },
+    { name: "Supermercado Angeloni (Ingleses)", type: "mercado", lat: -27.4428, lng: -48.3955, rod: "SC-403", km: 6.1 },
+
+    // --- LAZER E ALIMENTAÇÃO ---
+    { name: "Passeio Primavera (Bares/Restaurantes)", type: "lazer", lat: -27.5465, lng: -48.4988, rod: "SC-401", km: 3.8 },
+    { name: "Sorveteria Amoratto", type: "sorveteria", lat: -27.5238, lng: -48.4912, rod: "SC-401", km: 6.5 },
+    { name: "Bar do Tião", type: "bar", lat: -27.5842, lng: -48.5025, rod: "SC-406", km: 0.2 },
+    
+    // --- SERVIÇOS ---
+    { name: "Barbearia Vip", type: "barbeiro", lat: -27.5685, lng: -48.5085, rod: "SC-401", km: 1.2 }
+];
+
+export const POI_ICONS = {
+    policia: "👮",
+    saude: "🏥",
+    posto: "⛽",
+    borracharia: "🔧",
+    mercado: "🛒",
+    banco: "🏦",
+    lazer: "🍴",
+    sorveteria: "🍦",
+    bar: "🍺",
+    barbeiro: "✂️"
+};

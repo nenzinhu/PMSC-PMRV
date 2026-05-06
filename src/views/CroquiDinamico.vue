@@ -38,7 +38,11 @@ const ICON_MAP = {
   'arvore': { e: "🌳", l: "ÁRVORE", fs: 35 },
   'poste': { e: "💡", l: "POSTE", fs: 30 },
   'norte': { e: "🧭", l: "NORTE", fs: 35 },
-  'frenagem': { e: "⬛", l: "FRENAGEM", fs: 10 }
+  'frenagem': { e: "⬛", l: "FRENAGEM", fs: 10 },
+  'buraco': { e: "🕳️", l: "BURACO", fs: 30 },
+  'rio': { e: "🌊", l: "RIO", fs: 30 },
+  'lagoa': { e: "💧", l: "LAGOA", fs: 30 },
+  'aquaplanagem': { e: "🌧️", l: "AQUA", fs: 30 }
 };
 
 onMounted(async () => {
@@ -483,37 +487,6 @@ const exportar = async () => {
             </div>
           </template>
         </div>
-                 <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte (4 faixas)</button>
-                 <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
-                 <button class="btn btn-sm" @click="adicionarVia('curva-aberta-esq')">Aberta Esquerda</button>
-                 <button class="btn btn-sm" @click="adicionarVia('curva-fechada-dir')">Fechada Direita</button>
-                 <button class="btn btn-sm" @click="adicionarVia('curva-fechada-esq')">Fechada Esquerda</button>
-               </div>
-             </div>          </template>
-            <div v-for="(v, k) in ['v1', 'v2', 'moto', 'caminhao', 'onibus', 'bicicleta', 'viatura', 'ambulancia', 'reboque']" :key="k" 
-                 class="icon-item" @click="inserirIcone(v)">
-              <span class="icon-preview">{{ ICON_MAP[v].e }}</span>
-              <span class="icon-name">{{ ICON_MAP[v].l }}</span>
-            </div>
-          </template>
-
-          <!-- Objetos -->
-          <template v-if="iconCategory === 'objetos'">
-            <div v-for="(v, k) in ['cone', 'pare', 'arvore', 'poste', 'norte', 'frenagem']" :key="k" 
-                 class="icon-item" @click="inserirIcone(v)">
-              <span class="icon-preview">{{ ICON_MAP[v].e }}</span>
-              <span class="icon-name">{{ ICON_MAP[v].l }}</span>
-            </div>
-          </template>
-
-          <!-- Sinistros (Manifest) -->
-          <template v-if="iconCategory === 'sinistros'">
-            <div v-for="item in manifest" :key="item.code" class="icon-item" @click="inserirSvg(item.file.split('/').pop())">
-              <img :src="'/' + item.file" class="icon-svg-preview" style="filter: invert(1);" />
-              <span class="icon-name" style="font-size: 9px;">{{ item.title }}</span>
-            </div>
-          </template>
-        </div>
       </div>
     </div>
   </section>
@@ -556,15 +529,15 @@ const exportar = async () => {
 
 .icon-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
 .icon-item {
   background: rgba(255,255,255,0.05);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 12px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -578,13 +551,13 @@ const exportar = async () => {
 }
 
 .icon-preview {
-  font-size: 32px;
-  margin-bottom: 4px;
+  font-size: 20px;
+  margin-bottom: 2px;
 }
 
 .icon-svg-preview {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
 }
 

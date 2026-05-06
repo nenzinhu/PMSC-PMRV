@@ -1,0 +1,246 @@
+/* ============================================================
+   PMRV OPERACIONAL - TEMA DARK MODERNO V2
+   Foco: Legibilidade, Responsividade e Identidade Tecnológica
+============================================================ */
+
+:root {
+  /* Paleta de Cores Refinada */
+  --bg-main: #06080e;
+  --bg-card: #11141d;
+  --bg-surface: #1a1e2a;
+  
+  --primary: #4f46e5;         /* Indigo Moderno */
+  --primary-light: #818cf8;
+  --primary-glow: rgba(79, 70, 229, 0.25);
+  
+  --success: #10b981;        /* Emerald */
+  --warning: #f59e0b;        /* Amber */
+  --danger: #ef4444;         /* Rose */
+  --info: #0ea5e9;           /* Sky Blue */
+  
+  --text-main: #f1f5f9;      /* Slate 100 */
+  --text-muted: #94a3b8;     /* Slate 400 */
+  --text-dim: #64748b;       /* Slate 500 */
+  
+  --border-light: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.4);
+  --shadow-inner: inset 0 2px 4px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Base & Typography */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  padding: 12px;
+}
+
+/* Layout Container */
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 80px; /* Espaço para mobile navigation se houver */
+}
+
+/* Modern Glass Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.card-sub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Menu Grid System */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.menu-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-inner);
+}
+
+.menu-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  background: var(--bg-card);
+  box-shadow: 0 12px 20px -8px var(--primary-glow);
+}
+
+.menu-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-md);
+}
+
+.menu-icon-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.menu-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.menu-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.menu-arrow { display: none; } /* Removido para design mais limpo */
+
+/* Context Header (Topo da Home) */
+.context-header {
+  background: linear-gradient(145deg, #1e293b, #0f172a) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.time-info div:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem !important;
+  letter-spacing: -1px;
+}
+
+/* Buttons */
+.btn {
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+.btn-full { width: 100%; }
+
+/* Form Elements */
+input, select, textarea {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+label.field-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Responsive Utilities */
+@media (max-width: 480px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .context-header { flex-direction: column; text-align: center; gap: 16px; }
+  .weather-info { text-align: center !important; }
+  .time-info div:first-child { font-size: 2rem !important; }
+}
+
+/* Animation */
+.fade-up-enter-active {
+  transition: all 0.3s ease-out;
+}
+.fade-up-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
