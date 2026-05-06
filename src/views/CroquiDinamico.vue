@@ -81,7 +81,12 @@ const adicionarVia = (tipo) => {
       content = `<rect width="300" height="80" fill="#444" /><line x1="0" y1="0" x2="300" y2="0" stroke="black" stroke-width="5" /><line x1="0" y1="80" x2="300" y2="80" stroke="black" stroke-width="5" />`;
       break;
     case 'ponte-4':
-      content = `<rect width="300" height="200" fill="#444" /><line x1="0" y1="0" x2="300" y2="0" stroke="black" stroke-width="8" /><line x1="0" y1="200" x2="300" y2="200" stroke="black" stroke-width="8" />`;
+      content = `<rect width="300" height="200" fill="#444" />
+                 <line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="1" stroke-dasharray="10,10" />
+                 <line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="1" stroke-dasharray="10,10" />
+                 <line x1="0" y1="150" x2="300" y2="150" stroke="white" stroke-width="1" stroke-dasharray="10,10" />
+                 <line x1="0" y1="0" x2="300" y2="0" stroke="black" stroke-width="8" />
+                 <line x1="0" y1="200" x2="300" y2="200" stroke="black" stroke-width="8" />`;
       break;
     case 'curva-aberta-dir':
       content = `<path d="M 0 200 Q 100 0 300 0" fill="none" stroke="#333" stroke-width="100" />`;
