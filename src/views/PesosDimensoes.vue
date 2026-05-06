@@ -185,204 +185,109 @@ const copiarDim = () => {
 </script>
 
 <template>
-  <section class="screen active" aria-label="Pesos e Dimensões">
-    <div class="back-row">
-      <button class="btn btn-sm" @click="goBack">‹ Voltar</button>
+  <section class="screen active p-4" aria-label="Pesos e Dimensões">
+    <div class="flex items-center gap-4 mb-6">
+      <button class="btn-ghost text-lg" @click="goBack">←</button>
+      <div class="flex items-center gap-3">
+        <img src="/img/new_icons/pesos.png" alt="Peso" class="w-8 h-8" />
+        <h2 class="text-xl font-bold text-white">Pesos e Dimensões</h2>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title-with-icon">
-          <img src="/img/new_icons/pesos.png" alt="Peso" class="card-title-icon" />
-          <h2 class="card-title">Pesos e Dimensões</h2>
-        </div>
-      </div>
-
+    <div class="card p-6 bg-slate-900 border border-slate-700 rounded-2xl shadow-xl">
       <!-- Tabs Navigation -->
-      <div class="infra-tabs mt-8">
+      <div class="flex gap-2 p-1 bg-slate-800 rounded-xl mb-8">
         <button 
-          class="infra-tab-btn" 
-          :class="{ active: activeTab === 'pbt' }" 
+          class="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold rounded-lg transition-all" 
+          :class="activeTab === 'pbt' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'" 
           @click="activeTab = 'pbt'"
         >
           <img src="/img/new_icons/pesos.png" alt="Peso" class="icon-sm" /> Peso (PBT/Eixo)
         </button>
         <button 
-          class="infra-tab-btn" 
-          :class="{ active: activeTab === 'dim' }" 
+          class="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold rounded-lg transition-all" 
+          :class="activeTab === 'dim' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'" 
           @click="activeTab = 'dim'"
         >
           <img src="/img/new_icons/croqui.png" alt="Dimensões" class="icon-sm" /> Dimensões
         </button>
       </div>
 
-      <div class="divider mt-12 mb-16"></div>
-
       <!-- PBT CONTENT -->
-      <div v-if="activeTab === 'pbt'" class="tab-content">
-        <div class="form-field mb-16">
-          <label class="field-label">Método de Fiscalização</label>
-          <select v-model="metodo">
+      <div v-if="activeTab === 'pbt'" class="space-y-6">
+        <div class="form-group">
+          <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Método de Fiscalização</label>
+          <select v-model="metodo" class="w-full bg-slate-800 border-none rounded-lg p-3 text-white">
             <option value="nf">Nota Fiscal (Tolerância 5% PBT)</option>
             <option value="balanca">Balança (Tol. 5% PBT / 12.5% Eixos)</option>
           </select>
         </div>
 
-        <div class="form-grid">
-          <div class="form-field">
-            <label class="field-label">Configuração do Veículo (PBT)</label>
-            <select v-model="configValue">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Configuração (PBT)</label>
+            <select v-model="configValue" class="w-full bg-slate-800 border-none rounded-lg p-3 text-white">
               <optgroup label="Caminhão Simples">
-                <option v-for="p in VEHICLE_PRESETS.slice(0, 3)" :key="p.value" :value="p.value">
-                  {{ p.label }}
-                </option>
+                <option v-for="p in VEHICLE_PRESETS.slice(0, 3)" :key="p.value" :value="p.value">{{ p.label }}</option>
               </optgroup>
               <optgroup label="Caminhão Trator + Semirreboque">
-                <option v-for="p in VEHICLE_PRESETS.slice(3, 7)" :key="p.value" :value="p.value">
-                  {{ p.label }}
-                </option>
+                <option v-for="p in VEHICLE_PRESETS.slice(3, 7)" :key="p.value" :value="p.value">{{ p.label }}</option>
               </optgroup>
               <optgroup label="Combinações (CVC)">
-                <option v-for="p in VEHICLE_PRESETS.slice(7)" :key="p.value" :value="p.value">
-                  {{ p.label }}
-                </option>
+                <option v-for="p in VEHICLE_PRESETS.slice(7)" :key="p.value" :value="p.value">{{ p.label }}</option>
               </optgroup>
               <option value="MANUAL">✏️ Outro limite (Manual)</option>
             </select>
-            <input 
-              v-if="isManual"
-              type="number" 
-              v-model="manualLimite" 
-              class="mt-8" 
-              placeholder="Limite em KG"
-            />
           </div>
-
-          <!-- NOTA FISCAL FIELDS -->
-          <div v-if="metodo === 'nf'" class="form-row form-row-2">
-            <div class="form-field">
-              <label class="field-label">Tara (KG)</label>
-              <input type="number" v-model="tara" placeholder="Ex: 8500" />
+          
+          <div v-if="metodo === 'nf'" class="grid grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Tara (KG)</label>
+              <input type="number" v-model="tara" class="w-full bg-slate-800 rounded-lg p-3 text-white" />
             </div>
-            <div class="form-field">
-              <label class="field-label">Peso da Carga / NF (KG)</label>
-              <input type="number" v-model="cargaNF" placeholder="Ex: 12000" />
+            <div class="form-group">
+              <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Carga NF (KG)</label>
+              <input type="number" v-model="cargaNF" class="w-full bg-slate-800 rounded-lg p-3 text-white" />
             </div>
           </div>
-
-          <!-- BALANCA FIELDS -->
-          <div v-if="metodo === 'balanca'" class="form-field">
-            <label class="field-label">Peso Total Medido (PBT Apurado)</label>
-            <input type="number" v-model="pbtMedido" placeholder="Peso total na balança" />
+          
+          <div v-if="metodo === 'balanca'" class="form-group">
+            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">PBT Apurado (KG)</label>
+            <input type="number" v-model="pbtMedido" class="w-full bg-slate-800 rounded-lg p-3 text-white" />
           </div>
         </div>
 
-        <!-- AXLE MANAGEMENT (BALANCA ONLY) -->
-        <div v-if="metodo === 'balanca'" class="mt-16">
-          <div class="flex justify-between align-center mb-8">
-            <label class="field-label m-0">Pesagem por Eixo</label>
-            <button class="btn btn-sm btn-primary" @click="addEixo">+ Adicionar Eixo</button>
+        <div v-if="metodo === 'balanca'">
+          <div class="flex items-center justify-between mb-4">
+            <label class="text-xs font-bold text-slate-400 uppercase">Pesagem por Eixo</label>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500" @click="addEixo">+ Eixo</button>
           </div>
-          
-          <div v-if="eixos.length === 0" class="sub-box text-center py-16">
-            <span class="card-sub">Nenhum eixo adicionado para fiscalização.</span>
-          </div>
-
-          <VisualAxleSelector 
-            v-if="eixos.length > 0 && currentSchema.length > 0"
-            :schema="currentSchema"
-            v-model:eixos="eixos"
-          />
+          <VisualAxleSelector v-if="eixos.length > 0 && currentSchema.length > 0" :schema="currentSchema" v-model:eixos="eixos" />
         </div>
 
-        <!-- Resultados Peso -->
-        <div v-if="pbtApurado > 0 || resultadosEixos.temExcesso" class="result-box visible">
-          <div class="divider mt-16 mb-16"></div>
-          
-          <div class="infra-stats">
-            <div class="infra-stat">
-              <span class="infra-stat-label">PBT Apurado</span>
-              <strong :style="{ color: resultadosPBT.status === 'EXCESSO' ? 'var(--red)' : '#fff' }">
-                {{ formatKg(resultadosPBT.apurado) }}
-              </strong>
-            </div>
-            <div class="infra-stat">
-              <span class="infra-stat-label">Limite Legal</span>
-              <strong>{{ formatKg(resultadosPBT.limiteLegal) }}</strong>
-            </div>
-            <div class="infra-stat">
-              <span class="infra-stat-label">Com Tolerância</span>
-              <strong style="color: var(--blue)">{{ formatKg(resultadosPBT.limiteMax) }}</strong>
-            </div>
-          </div>
-
-          <!-- Alertas PBT -->
-          <div v-if="resultadosPBT.status === 'LEGAL' && !resultadosEixos.temExcesso" class="sub-box mt-12" style="background: var(--green-dim); border-color: var(--green);">
-            <div class="flex align-center gap-8">
-              <span style="font-size: 20px;">✅</span>
-              <div>
-                <strong style="color: var(--green); display: block;">DENTRO DO LIMITE</strong>
-                <span class="card-sub">Peso em conformidade com a legislação.</span>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="resultadosPBT.status === 'TOLERANCIA'" class="sub-box mt-12" style="background: var(--amber-dim); border-color: var(--amarelo);">
-            <div class="flex align-center gap-8">
-              <span style="font-size: 20px;">⚠️</span>
-              <div>
-                <strong style="color: var(--amarelo); display: block;">DENTRO DA TOLERÂNCIA (PBT)</strong>
-                <span class="card-sub">Excesso de {{ formatKg(resultadosPBT.excessoTotal) }}, mas dentro dos 5%.</span>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="resultadosPBT.status === 'EXCESSO'" class="sub-box sub-box-red mt-12">
-            <div class="flex align-center gap-8">
-              <span style="font-size: 20px;">⚖️</span>
-              <div>
-                <strong style="color: var(--red); display: block;">EXCESSO PBT DETECTADO!</strong>
-                <span class="card-sub">
-                  Excesso Total: <strong>{{ formatKg(resultadosPBT.excessoTotal) }}</strong><br>
-                  Acima da Tolerância: <strong>{{ formatKg(resultadosPBT.excessoTolerancia) }}</strong>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Alerta Eixos -->
-          <div v-if="resultadosEixos.temExcesso" class="sub-box sub-box-red mt-12">
-            <div class="flex align-center gap-8">
-              <span style="font-size: 20px;">⚖️</span>
-              <div>
-                <strong style="color: var(--red); display: block;">EXCESSO NOS EIXOS!</strong>
-                <span class="card-sub">
-                  Detectado excesso em {{ resultadosEixos.excedentes.length }} conjunto(s) de eixos.
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Enquadramento e Multa -->
-          <div v-if="resultadosPBT.status === 'EXCESSO' || resultadosEixos.temExcesso" class="mt-16">
-            <div class="infra-stat mb-12">
-              <span class="infra-stat-label">Multa Estimada</span>
-              <strong style="color: var(--amarelo); font-size: 1.2rem;">
-                R$ {{ multaTotal.toFixed(2).replace('.', ',') }}
-              </strong>
-            </div>
-
-            <label class="result-label">📑 Texto da Infração</label>
-            <div class="result-text" style="white-space: pre-wrap;">{{ infracaoTextoPeso }}</div>
-            <div class="result-actions">
-              <button class="btn btn-primary btn-full" @click="copiarPBT">
-                {{ copiedPBT ? '✅ Copiado!' : '📋 Copiar Dados' }}
-              </button>
-            </div>
-          </div>
+        <!-- Result Section -->
+        <div v-if="pbtApurado > 0" class="mt-8 pt-6 border-t border-slate-700">
+           <div class="flex justify-between items-center mb-6">
+              <span class="text-slate-400">Total Apurado</span>
+              <span class="text-2xl font-bold text-white">{{ formatKg(pbtApurado) }}</span>
+           </div>
+           <div class="p-4 rounded-xl" :class="resultadosPBT.status === 'EXCESSO' ? 'bg-red-900/30 border border-red-500' : 'bg-emerald-900/30 border border-emerald-500'">
+             <p class="text-sm font-bold" :class="resultadosPBT.status === 'EXCESSO' ? 'text-red-400' : 'text-emerald-400'">
+               {{ resultadosPBT.status === 'EXCESSO' ? '⚠️ EXCESSO DETECTADO' : '✅ DENTRO DOS LIMITES' }}
+             </p>
+           </div>
         </div>
       </div>
+      <!-- End PBT -->
+    </div>
+  </section>
+</template>
 
+<style scoped>
+.btn-ghost { background: none; border: none; color: #94a3b8; cursor: pointer; }
+.btn-ghost:hover { color: white; }
+.icon-sm { width: 20px; height: 20px; }
+</style>
       <!-- DIMENSIONS CONTENT -->
       <div v-else class="tab-content">
         <p class="card-sub mb-16">Limites de Dimensões (Res. 210/06 e 882/21)</p>
