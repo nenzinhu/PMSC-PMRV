@@ -346,17 +346,16 @@ const exportar = async () => {
           <div class="croqui-toolbar">
             <label class="field-label">Retas</label>
             <div class="grid grid-cols-3 gap-2 mb-4">
-              <button class="btn btn-sm" @click="adicionarVia('reta-2')">2 Faixas</button>
-              <button class="btn btn-sm" @click="adicionarVia('reta-3')">3 Faixas</button>
-              <button class="btn btn-sm" @click="adicionarVia('reta-4')">4 Faixas</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-2')">2 Pistas</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-3')">3 Pistas</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-4')">4 Pistas</button>
             </div>
 
             <label class="field-label">Pontes</label>
             <div class="grid grid-cols-2 gap-2 mb-4">
-              <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte 1 Faixa</button>
-              <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte 4 Faixas</button>
+              <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte 1 Pista</button>
+              <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte 4 Pistas</button>
             </div>
-
             <label class="field-label">Curvas</label>
             <div class="grid grid-cols-2 gap-2">
               <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
