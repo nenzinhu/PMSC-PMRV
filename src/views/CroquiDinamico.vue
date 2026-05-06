@@ -57,25 +57,35 @@ const adicionarVia = (tipo) => {
   const id = 'via-' + Date.now();
   let content = '';
 
-  if (tipo === 'reta') {
-    content = `
-      <rect width="300" height="100" fill="#333" />
-      <line x1="0" y1="50" x2="300" y2="50" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" />
-      <line x1="0" y1="5" x2="300" y2="5" stroke="white" stroke-width="2" />
-      <line x1="0" y1="95" x2="300" y2="95" stroke="white" stroke-width="2" />
-    `;
-  } else if (tipo === 'curva') {
-    content = `
-      <path d="M 0 200 Q 0 0 200 0" fill="none" stroke="#333" stroke-width="100" />
-      <path d="M 0 200 Q 0 0 200 0" fill="none" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" />
-    `;
-  } else if (tipo === 'cruzamento') {
-    content = `
-      <rect x="80" y="0" width="100" height="260" fill="#333" />
-      <rect x="0" y="80" width="260" height="100" fill="#333" />
-      <line x1="130" y1="0" x2="130" y2="260" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" />
-      <line x1="0" y1="130" x2="260" y2="130" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" />
-    `;
+  // Infrastructure logic
+  switch (tipo) {
+    case 'reta-2':
+      content = `<rect width="300" height="100" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" /><line x1="0" y1="5" x2="300" y2="5" stroke="white" stroke-width="2" /><line x1="0" y1="95" x2="300" y2="95" stroke="white" stroke-width="2" />`;
+      break;
+    case 'reta-3':
+      content = `<rect width="300" height="150" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" /><line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" /><line x1="0" y1="25" x2="300" y2="25" stroke="yellow" stroke-width="1" stroke-dasharray="5,5" /><line x1="0" y1="125" x2="300" y2="125" stroke="yellow" stroke-width="1" stroke-dasharray="5,5" />`;
+      break;
+    case 'reta-4':
+      content = `<rect width="300" height="200" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" /><line x1="0" y1="100" x2="300" y2="100" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" /><line x1="0" y1="150" x2="300" y2="150" stroke="white" stroke-width="2" />`;
+      break;
+    case 'ponte-1':
+      content = `<rect width="300" height="80" fill="#444" /><line x1="0" y1="0" x2="300" y2="0" stroke="black" stroke-width="5" /><line x1="0" y1="80" x2="300" y2="80" stroke="black" stroke-width="5" />`;
+      break;
+    case 'ponte-4':
+      content = `<rect width="300" height="200" fill="#444" /><line x1="0" y1="0" x2="300" y2="0" stroke="black" stroke-width="8" /><line x1="0" y1="200" x2="300" y2="200" stroke="black" stroke-width="8" />`;
+      break;
+    case 'curva-aberta-dir':
+      content = `<path d="M 0 200 Q 100 0 300 0" fill="none" stroke="#333" stroke-width="100" />`;
+      break;
+    case 'curva-aberta-esq':
+      content = `<path d="M 300 200 Q 200 0 0 0" fill="none" stroke="#333" stroke-width="100" />`;
+      break;
+    case 'curva-fechada-dir':
+      content = `<path d="M 0 300 Q 0 0 300 0" fill="none" stroke="#333" stroke-width="100" />`;
+      break;
+    case 'curva-fechada-esq':
+      content = `<path d="M 300 300 Q 300 0 0 0" fill="none" stroke="#333" stroke-width="100" />`;
+      break;
   }
 
   createSvgElement(croquiVias.value, id, content, 'via', { x: 50, y: 150 });
@@ -333,10 +343,27 @@ const exportar = async () => {
       <div class="croqui-toolbar mt-12">
         <div class="toolbar-group">
           <label class="field-label-orange">Vias</label>
-          <div class="flex gap-8">
-            <button class="btn btn-sm" @click="adicionarVia('reta')">🛣️ Reta</button>
-            <button class="btn btn-sm" @click="adicionarVia('curva')">⤴️ Curva</button>
-            <button class="btn btn-sm" @click="adicionarVia('cruzamento')">➕ Cruz.</button>
+          <div class="croqui-toolbar">
+            <label class="field-label">Retas</label>
+            <div class="grid grid-cols-3 gap-2 mb-4">
+              <button class="btn btn-sm" @click="adicionarVia('reta-2')">2 Faixas</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-3')">3 Faixas</button>
+              <button class="btn btn-sm" @click="adicionarVia('reta-4')">4 Faixas</button>
+            </div>
+
+            <label class="field-label">Pontes</label>
+            <div class="grid grid-cols-2 gap-2 mb-4">
+              <button class="btn btn-sm" @click="adicionarVia('ponte-1')">Ponte 1 Faixa</button>
+              <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte 4 Faixas</button>
+            </div>
+
+            <label class="field-label">Curvas</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
+              <button class="btn btn-sm" @click="adicionarVia('curva-aberta-esq')">Aberta Esquerda</button>
+              <button class="btn btn-sm" @click="adicionarVia('curva-fechada-dir')">Fechada Direita</button>
+              <button class="btn btn-sm" @click="adicionarVia('curva-fechada-esq')">Fechada Esquerda</button>
+            </div>
           </div>
         </div>
 
