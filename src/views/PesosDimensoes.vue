@@ -205,14 +205,14 @@ const copiarDim = () => {
           :class="{ active: activeTab === 'pbt' }" 
           @click="activeTab = 'pbt'"
         >
-          ⚖️ Peso (PBT/Eixo)
+          <img src="/img/new_icons/pesos.png" alt="Peso" class="icon-sm" /> Peso (PBT/Eixo)
         </button>
         <button 
           class="infra-tab-btn" 
           :class="{ active: activeTab === 'dim' }" 
           @click="activeTab = 'dim'"
         >
-          📏 Dimensões
+          <img src="/img/new_icons/croqui.png" alt="Dimensões" class="icon-sm" /> Dimensões
         </button>
       </div>
 
@@ -485,6 +485,12 @@ const copiarDim = () => {
 </template>
 
 <style scoped>
+.icon-sm {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
 .mb-16 { margin-bottom: 16px; }
 .mb-12 { margin-bottom: 12px; }
 .mb-8 { margin-bottom: 8px; }
