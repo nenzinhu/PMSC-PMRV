@@ -454,6 +454,41 @@ const exportar = async () => {
                  <button class="btn btn-sm" @click="adicionarVia('curva-fechada-dir')">Fechada Direita</button>
                  <button class="btn btn-sm" @click="adicionarVia('curva-fechada-esq')">Fechada Esquerda</button>
                </div>
+             </div>
+          </template>
+
+          <!-- Veículos -->
+          <template v-if="iconCategory === 'veiculos'">
+            <div v-for="(v, k) in ['v1', 'v2', 'moto', 'caminhao', 'onibus', 'bicicleta', 'viatura', 'ambulancia', 'reboque']" :key="k" 
+                 class="icon-item" @click="inserirIcone(v)">
+              <span class="icon-preview">{{ ICON_MAP[v].e }}</span>
+              <span class="icon-name">{{ ICON_MAP[v].l }}</span>
+            </div>
+          </template>
+
+          <!-- Objetos -->
+          <template v-if="iconCategory === 'objetos'">
+            <div v-for="(v, k) in ['cone', 'pare', 'arvore', 'poste', 'norte', 'frenagem']" :key="k" 
+                 class="icon-item" @click="inserirIcone(v)">
+              <span class="icon-preview">{{ ICON_MAP[v].e }}</span>
+              <span class="icon-name">{{ ICON_MAP[v].l }}</span>
+            </div>
+          </template>
+
+          <!-- Sinistros (Manifest) -->
+          <template v-if="iconCategory === 'sinistros'">
+            <div v-for="item in manifest" :key="item.code" class="icon-item" @click="inserirSvg(item.file.split('/').pop())">
+              <img :src="'/' + item.file" class="icon-svg-preview" style="filter: invert(1);" />
+              <span class="icon-name" style="font-size: 9px;">{{ item.title }}</span>
+            </div>
+          </template>
+        </div>
+                 <button class="btn btn-sm" @click="adicionarVia('ponte-4')">Ponte (4 faixas)</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-aberta-dir')">Aberta Direita</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-aberta-esq')">Aberta Esquerda</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-fechada-dir')">Fechada Direita</button>
+                 <button class="btn btn-sm" @click="adicionarVia('curva-fechada-esq')">Fechada Esquerda</button>
+               </div>
              </div>          </template>
             <div v-for="(v, k) in ['v1', 'v2', 'moto', 'caminhao', 'onibus', 'bicicleta', 'viatura', 'ambulancia', 'reboque']" :key="k" 
                  class="icon-item" @click="inserirIcone(v)">
