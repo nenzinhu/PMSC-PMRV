@@ -68,7 +68,7 @@ const adicionarVia = (tipo) => {
     case 'reta-4-dashed':
       content = `<rect width="300" height="200" fill="#333" />
                  <line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" stroke-dasharray="10,10" />
-                 <line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" />
+                 <line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" stroke-dasharray="10,10" />
                  <line x1="0" y1="150" x2="300" y2="150" stroke="white" stroke-width="2" stroke-dasharray="10,10" />`;
       break;
     case 'reta-4':
