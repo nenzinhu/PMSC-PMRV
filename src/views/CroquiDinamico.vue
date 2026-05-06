@@ -65,6 +65,12 @@ const adicionarVia = (tipo) => {
     case 'reta-3':
       content = `<rect width="300" height="150" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" /><line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" /><line x1="0" y1="25" x2="300" y2="25" stroke="yellow" stroke-width="1" stroke-dasharray="5,5" /><line x1="0" y1="125" x2="300" y2="125" stroke="yellow" stroke-width="1" stroke-dasharray="5,5" />`;
       break;
+    case 'reta-4-dashed':
+      content = `<rect width="300" height="200" fill="#333" />
+                 <line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" stroke-dasharray="10,10" />
+                 <line x1="0" y1="100" x2="300" y2="100" stroke="white" stroke-width="2" />
+                 <line x1="0" y1="150" x2="300" y2="150" stroke="white" stroke-width="2" stroke-dasharray="10,10" />`;
+      break;
     case 'reta-4':
       content = `<rect width="300" height="200" fill="#333" /><line x1="0" y1="50" x2="300" y2="50" stroke="white" stroke-width="2" /><line x1="0" y1="100" x2="300" y2="100" stroke="yellow" stroke-width="2" stroke-dasharray="10,10" /><line x1="0" y1="150" x2="300" y2="150" stroke="white" stroke-width="2" />`;
       break;
@@ -349,6 +355,7 @@ const exportar = async () => {
               <button class="btn btn-sm" @click="adicionarVia('reta-2')">Pista (2 faixas)</button>
               <button class="btn btn-sm" @click="adicionarVia('reta-3')">Pista (3 faixas)</button>
               <button class="btn btn-sm" @click="adicionarVia('reta-4')">Pista (4 faixas)</button>
+              <button class="btn btn-sm btn-info" @click="adicionarVia('reta-4-dashed')">Pista (4 faixas tracejadas)</button>
             </div>
 
             <label class="field-label">Pontes</label>
